@@ -83,11 +83,7 @@ function KanbanColumn({ kabanBoard }: KanbanProps) {
                   </Box>
 
                   {column?.cards?.map((card, index) => {
-                    return (
-                      card && (
-                        <KanbanCard card={card} index={index} key={index} />
-                      )
-                    );
+                    return <KanbanCard card={card} index={index} key={index} />;
                   })}
                   {provided.placeholder}
                   <KanbanFooter />
