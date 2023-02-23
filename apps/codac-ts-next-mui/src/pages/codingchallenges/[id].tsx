@@ -27,7 +27,9 @@ import { useAuth } from '../../hooks/useAuth';
 // Get type from staticProps into component thru InferGetStaticPropsType
 type Props = {};
 
-const Challange = ({ challengeData }: any) => {
+const Challange = ({
+  challengeData,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [challengeBody, setChallengeBody] = useState(
     challengeData?.attributes?.challenge,
   );
@@ -290,17 +292,16 @@ export const getServerSideProps = async (ctx: { params: { id: any } }) => {
 //   const challengesArray = data?.codingChallenges?.data;
 //   // console.log('challengesArray', challengesArray);
 
-//   const paths = challengesArray?.map((challenge) => ({
-//     params: { id: challenge?.id },
-//   }));
-//   console.log('paths', paths);
-//   return {
-//     paths,
-//     fallback: 'blocking',
-//     // fallback: 'blocking',
-//   };
-//   // Notes:
-//   // using a map to reshape the array without changing tha data inside. Map of esponse to have the return with params and id
-//   // Paths need to get returned in the following way: paths: [{ params: { id: '1' } }, { params: { id: '1' } }],
-//   // getStaticPaths query checking all challenges and returning a path for each id
-// };
+  const paths = challengesArray?.map((challenge) => ({
+    params: { id: challenge?.id },
+  }));
+
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+  // Notes:
+  // using a map to reshape the array without changing tha data inside. Map of esponse to have the return with params and id
+  // Paths need to get returned in the following way: paths: [{ params: { id: '1' } }, { params: { id: '1' } }],
+  // getStaticPaths query checking all challenges and returning a path for each id
+};
