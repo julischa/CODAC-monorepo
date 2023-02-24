@@ -56,14 +56,17 @@ const ChatRooms: React.FC = () => {
         }}
       >
         {data?.chats?.data.map((room) => (
+        {data?.chats?.data.map((room) => (
           <Button
             sx={{ m: 1 }}
+            component="span"
             component="span"
             variant="contained"
             color={room.attributes?.name === room ? 'inherit' : 'primary'}
             onClick={() => setRoom(room?.id || '')}
             key={room.id}
           >
+            {room.attributes?.name}
             {room.attributes?.name}
           </Button>
         ))}
