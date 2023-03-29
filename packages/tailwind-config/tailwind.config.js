@@ -10,7 +10,7 @@ module.exports = {
       "sofia-pro-soft": ["sofia-pro-soft", ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
-      xxxs: "10px",
+      xxxs: "9px",
       xxs: "12px",
       xs: "14px",
       sm: "16px",
